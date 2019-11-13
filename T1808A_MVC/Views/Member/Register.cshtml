@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+<h2>Register</h2>
+@{ Html.BeginForm("Save", "Member");}
+<div>
+    @Html.Label("Username")
+    @Html.TextBox("username")
+</div>
+<div>
+    @Html.Label("Password")
+    @Html.Password("password")
+</div>
+<div>
+    @Html.Label("Fullname")
+    @Html.TextBox("fullname")
+</div>
+<div>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+</div>
+@{Html.EndForm();}

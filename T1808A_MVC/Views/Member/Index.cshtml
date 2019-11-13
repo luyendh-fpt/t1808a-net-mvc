@@ -1,0 +1,12 @@
+﻿@using T1808A_MVC.Models
+
+@{
+   var members = ViewData["members"] as List<Member>;
+}
+
+<ul>
+    @foreach (var mem in members)
+    {
+        <li>@mem.FullName</li>        
+    }
+</ul>
