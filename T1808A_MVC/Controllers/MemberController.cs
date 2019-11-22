@@ -21,6 +21,19 @@ namespace T1808A_MVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Member member)
+        {
+            _memberService.Store(member);
+            return Redirect("/Member");
+        }
+
         public ActionResult Save(string username, string password, string fullname)
         {
             Member member = new Member()
@@ -36,8 +49,19 @@ namespace T1808A_MVC.Controllers
 
         public ActionResult Index()
         {
-            ViewData["members"] = _memberService.GetList(1, 10);
-            return View();
+            //ViewData["members"] = _memberService.GetList(1, 10);
+            var members = _memberService.GetList(1, 10);
+            return View("~/Views/Member/Index.cshtml", members);
+        }
+
+        public ActionResult Detail(string username)
+        {
+            var member = _memberService.GetDetail(username);
+            if (member == null)
+            {
+                return View("~/Views/NotFound.cshtml");
+            }
+            return View(member);
         }
     }
 }

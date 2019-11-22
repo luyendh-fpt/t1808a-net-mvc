@@ -48,6 +48,8 @@ C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\roslyn\vbc.rsp
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\roslyn\VBCSCompiler.exe
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\Antlr3.Runtime.dll
+C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\EntityFramework.dll
+C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\EntityFramework.SqlServer.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\Newtonsoft.Json.dll
@@ -59,6 +61,8 @@ C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.WebPages.De
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.WebPages.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\WebGrease.dll
+C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\EntityFramework.xml
+C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\EntityFramework.SqlServer.xml
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.Helpers.xml
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.Mvc.xml
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\bin\System.Web.Optimization.xml

@@ -15,7 +15,21 @@ namespace T1808A_MVC.Service
         {
             if (_members == null)
             {
-                _members = new List<Member>();
+                _members = new List<Member>()
+                {
+                    new Member()
+                    {
+                        Username = "xuanhung",
+                        Password = "123",
+                        FullName = "Hung Xuan"
+                    },
+                    new Member()
+                    {
+                        Username = "hongnhung",
+                        Password = "123",
+                        FullName = "Nhung Dao"
+                    },
+                };
             }
         }
 
