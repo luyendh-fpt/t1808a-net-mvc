@@ -6,6 +6,7 @@ using System.Web;
 
 namespace T1808A_MVC.Models
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class T1808A_MVCContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
@@ -15,7 +16,7 @@ namespace T1808A_MVC.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public T1808A_MVCContext() : base("name=T1808A_MVCContext")
+        public T1808A_MVCContext() : base("name=MySQLContext")
         {
         }
 

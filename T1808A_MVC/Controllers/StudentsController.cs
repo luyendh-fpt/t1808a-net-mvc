@@ -109,8 +109,11 @@ namespace T1808A_MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+            if (student != null)
+            {
+                db.Students.Remove(student);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
