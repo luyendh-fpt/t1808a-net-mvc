@@ -15,9 +15,49 @@ namespace T1808A_MVC.Controllers
         private T1808A_MVCContext db = new T1808A_MVCContext();
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(string keyword)
         {
-            return View(db.Students.ToList());
+            List<Student> list = new List<Student>()
+            {
+                new Student()
+                {
+                    RollNumber = "A001",
+                    Id = 1
+                },
+                new Student()
+                {
+                    RollNumber = "A002",
+                    Id = 2
+                },
+                new Student()
+                {
+                    RollNumber = "A003",
+                    Id = 3
+                },
+                new Student()
+                {
+                    RollNumber = "A004",
+                    Id = 4
+                },
+                new Student()
+                {
+                    RollNumber = "A005",
+                    Id = 5
+                },
+                new Student()
+                {
+                    RollNumber = "A006",
+                    Id = 6
+                },
+                new Student()
+                {
+                    RollNumber = "A007",
+                    Id = 7
+                },
+            };
+            //IQueryable<Student> list = from s in db.Students where s.RollNumber == keyword orderby s.Id descending select s;
+            return View(list.Where(student => student.RollNumber == keyword)
+                .ToList());
         }
 
         // GET: Students/Details/5

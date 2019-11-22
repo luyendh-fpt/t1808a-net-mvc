@@ -20,6 +20,9 @@ namespace T1808A_MVC.Models
         {
         }
 
-        public System.Data.Entity.DbSet<T1808A_MVC.Models.Student> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<OtherClass> OtherClasses { get; set; }
     }
 }

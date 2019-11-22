@@ -11,7 +11,6 @@ namespace T1808A_MVC.Models
     {
         public int Id { get; set; }
         [DisplayName("Roll number")]
-        [EmailAddress(ErrorMessage = "Invalid email")]
         public string RollNumber { get; set; }
     }
 }
