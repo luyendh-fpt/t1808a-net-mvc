@@ -24,5 +24,7 @@ namespace T1808A_MVC.Models
         public System.Data.Entity.DbSet<T1808A_MVC.Models.Category> Categories { get; set; }
 
         public System.Data.Entity.DbSet<T1808A_MVC.Models.OtherClass> OtherClasses { get; set; }
+
+        public System.Data.Entity.DbSet<T1808A_MVC.Models.Student> Students { get; set; }
     }
 }

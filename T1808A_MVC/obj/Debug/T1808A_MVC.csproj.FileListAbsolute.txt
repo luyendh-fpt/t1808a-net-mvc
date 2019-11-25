@@ -87,3 +87,4 @@ C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\obj\Debug\T1808A_MVC.dll
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\obj\Debug\T1808A_MVC.pdb
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\obj\Debug\T1808A_MVC.Migrations.AddOtherClass.resources
 C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\obj\Debug\T1808A_MVC.csprojAssemblyReference.cache
+C:\Users\xuan hung\source\repos\T1808A_MVC\T1808A_MVC\obj\Debug\T1808A_MVC.Migrations.AddRelationShip.resources

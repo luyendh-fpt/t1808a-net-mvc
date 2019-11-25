@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201911220931594_AddOtherClass.Designer.cs">
       <DependentUpon>201911220931594_AddOtherClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911250854457_AddRelationShip.cs" />
+    <Compile Include="Migrations\201911250854457_AddRelationShip.Designer.cs">
+      <DependentUpon>201911250854457_AddRelationShip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CombineData.cs" />
@@ -221,7 +225,6 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Detail.cshtml" />
     <Content Include="Views\Member\Create.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
@@ -242,6 +245,7 @@
     <Content Include="Views\OtherClasses\Edit.cshtml" />
     <Content Include="Views\OtherClasses\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDemo.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911220931594_AddOtherClass.resx">
       <DependentUpon>201911220931594_AddOtherClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911250854457_AddRelationShip.resx">
+      <DependentUpon>201911250854457_AddRelationShip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

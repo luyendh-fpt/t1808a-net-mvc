@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using T1808A_MVC.Models;
+using T1808A_MVC.Util;
 
 namespace T1808A_MVC.Controllers
 {
@@ -52,6 +53,7 @@ namespace T1808A_MVC.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                CategoryUtil.SetCategories(db.Categories.ToList());
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +86,7 @@ namespace T1808A_MVC.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                CategoryUtil.SetCategories(db.Categories.ToList());
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -112,6 +115,7 @@ namespace T1808A_MVC.Controllers
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
             db.SaveChanges();
+            CategoryUtil.SetCategories(db.Categories.ToList());
             return RedirectToAction("Index");
         }
 

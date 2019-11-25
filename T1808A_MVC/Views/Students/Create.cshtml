@@ -1,4 +1,5 @@
-﻿@model T1808A_MVC.Models.Student
+﻿@using T1808A_MVC.Util
+@model T1808A_MVC.Models.Student
 
 @{
     ViewBag.Title = "Create";
@@ -19,6 +20,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RollNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RollNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", CategoryUtil.GetCategoriesAsDropDownList(), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
 

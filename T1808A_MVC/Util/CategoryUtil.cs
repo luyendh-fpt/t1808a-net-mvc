@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using T1808A_MVC.Models;
 
 namespace T1808A_MVC.Util
@@ -14,7 +15,31 @@ namespace T1808A_MVC.Util
 
         public static List<Category> GetCategories()
         {
-            return _listCategories ?? (_listCategories = db.Categories.ToList());
+            if (_listCategories == null)
+            {
+                _listCategories = db.Categories.ToList();
+            }
+            return _listCategories;
+        }
+
+        public static List<SelectListItem> GetCategoriesAsDropDownList()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            if (_listCategories == null)
+            {
+                _listCategories = db.Categories.ToList();
+            }
+
+            foreach (var category in _listCategories)
+            {
+                list.Add(new SelectListItem {Text = category.Name, Value = category.Id.ToString()});
+            }
+            return list;
+        }
+
+        public static void SetCategories(List<Category> categories)
+        {
+            _listCategories = categories;
         }
     }
 }

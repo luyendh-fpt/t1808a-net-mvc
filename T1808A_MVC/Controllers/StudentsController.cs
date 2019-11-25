@@ -16,15 +16,14 @@ namespace T1808A_MVC.Controllers
 
         public ActionResult ByCategory(int? id)
         {
-            ViewData["categoryId"] = id;
-            var listStudent = db.Students.ToList(); // lọc theo category
+            ViewData["category"] = db.Categories.Find(id);
+            var listStudent = db.Students.Where(s => s.CategoryId == id).ToList(); // lọc theo category
             return View("Index", listStudent);
         }
 
         // GET: Students
         public ActionResult Index(string keyword)
         {
-            ViewBag.Categories = db.Categories.ToList();
             var listStudent = db.Students.ToList();
             //IQueryable<Student> list = from s in db.Students where s.RollNumber == keyword orderby s.Id descending select s;
             return View(listStudent);
@@ -56,7 +55,7 @@ namespace T1808A_MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RollNumber")] Student student)
+        public ActionResult Create([Bind(Include = "Id,RollNumber,CategoryId")] Student student)
         {
             if (ModelState.IsValid)
             {

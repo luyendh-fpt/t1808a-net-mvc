@@ -1,9 +1,6 @@
 ﻿@using T1808A_MVC.Models
 @using T1808A_MVC.Util
 <!DOCTYPE html>
-@{
-   var listCategory = ViewBag.Categories as List<Category>;
-}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @foreach (var cate in listCategory)
+                    @foreach (var cate in CategoryUtil.GetCategories())
                     {
                     <li>@Html.ActionLink(cate.Name, "ByCategory", "Students",new
                         {

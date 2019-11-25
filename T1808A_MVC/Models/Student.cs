@@ -12,5 +12,9 @@ namespace T1808A_MVC.Models
         public int Id { get; set; }
         [DisplayName("Roll number")]
         public string RollNumber { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }
