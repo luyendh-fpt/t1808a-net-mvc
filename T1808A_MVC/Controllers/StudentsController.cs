@@ -14,50 +14,20 @@ namespace T1808A_MVC.Controllers
     {
         private T1808A_MVCContext db = new T1808A_MVCContext();
 
+        public ActionResult ByCategory(int? id)
+        {
+            ViewData["categoryId"] = id;
+            var listStudent = db.Students.ToList(); // lọc theo category
+            return View("Index", listStudent);
+        }
+
         // GET: Students
         public ActionResult Index(string keyword)
         {
-            List<Student> list = new List<Student>()
-            {
-                new Student()
-                {
-                    RollNumber = "A001",
-                    Id = 1
-                },
-                new Student()
-                {
-                    RollNumber = "A002",
-                    Id = 2
-                },
-                new Student()
-                {
-                    RollNumber = "A003",
-                    Id = 3
-                },
-                new Student()
-                {
-                    RollNumber = "A004",
-                    Id = 4
-                },
-                new Student()
-                {
-                    RollNumber = "A005",
-                    Id = 5
-                },
-                new Student()
-                {
-                    RollNumber = "A006",
-                    Id = 6
-                },
-                new Student()
-                {
-                    RollNumber = "A007",
-                    Id = 7
-                },
-            };
+            ViewBag.Categories = db.Categories.ToList();
+            var listStudent = db.Students.ToList();
             //IQueryable<Student> list = from s in db.Students where s.RollNumber == keyword orderby s.Id descending select s;
-            return View(list.Where(student => student.RollNumber == keyword)
-                .ToList());
+            return View(listStudent);
         }
 
         // GET: Students/Details/5

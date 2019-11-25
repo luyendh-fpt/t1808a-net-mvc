@@ -176,6 +176,7 @@
     <Compile Include="Service\IMemberService.cs" />
     <Compile Include="Service\InMemoryMemberService.cs" />
     <Compile Include="Service\MySQLMemberService.cs" />
+    <Compile Include="Util\CategoryUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -240,6 +241,7 @@
     <Content Include="Views\OtherClasses\Details.cshtml" />
     <Content Include="Views\OtherClasses\Edit.cshtml" />
     <Content Include="Views\OtherClasses\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
