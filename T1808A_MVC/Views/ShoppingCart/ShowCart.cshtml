@@ -1,0 +1,16 @@
+﻿@using T1808A_MVC.Models
+
+@{
+    ViewBag.Title = "GetParameter";
+    var cart = ViewBag.shoppingCart as ShoppingCart;
+}
+
+<h2>Hello </h2>
+<ul>
+    @foreach (var item in cart.GetCartItems())
+    {
+        <li>@item.ProductName - @item.Quantity - @item.Price</li>
+    }
+</ul>
+
+

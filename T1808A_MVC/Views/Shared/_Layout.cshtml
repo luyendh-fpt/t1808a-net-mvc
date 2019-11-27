@@ -22,12 +22,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Products", "Index", "Products")</li>  
+                    <li>@Html.ActionLink("Cart", "ShowCart", "ShoppingCart")</li>  
                     @foreach (var cate in CategoryUtil.GetCategories())
                     {
-                    <li>@Html.ActionLink(cate.Name, "ByCategory", "Students",new
-                        {
-                            id = cate.Id
-                        }, null )</li>
+                        <li>@Html.ActionLink(cate.Name, "ByCategory", "Students", new
+                            {
+                                id = cate.Id
+                            }, null)</li>
                     }
                 </ul>
             </div>

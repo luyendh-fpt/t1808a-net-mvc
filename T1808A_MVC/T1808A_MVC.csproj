@@ -142,7 +142,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\OtherClassesController.cs" />
+    <Compile Include="Controllers\ProductCategoriesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,12 +169,19 @@
     <Compile Include="Migrations\201911250854457_AddRelationShip.Designer.cs">
       <DependentUpon>201911250854457_AddRelationShip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911270645411_AddProductCategoryRelationship.cs" />
+    <Compile Include="Migrations\201911270645411_AddProductCategoryRelationship.Designer.cs">
+      <DependentUpon>201911270645411_AddProductCategoryRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CombineData.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\OtherClass.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\T1808A_MVCContext.cs" />
     <Compile Include="Models\T1808A_MVCContext2.cs" />
@@ -229,11 +238,6 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
@@ -246,6 +250,19 @@
     <Content Include="Views\OtherClasses\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDemo.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\ProductCategories\Create.cshtml" />
+    <Content Include="Views\ProductCategories\Delete.cshtml" />
+    <Content Include="Views\ProductCategories\Details.cshtml" />
+    <Content Include="Views\ProductCategories\Edit.cshtml" />
+    <Content Include="Views\ProductCategories\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\AddCart.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911250854457_AddRelationShip.resx">
       <DependentUpon>201911250854457_AddRelationShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911270645411_AddProductCategoryRelationship.resx">
+      <DependentUpon>201911270645411_AddProductCategoryRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

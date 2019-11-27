@@ -24,5 +24,6 @@ namespace T1808A_MVC.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<OtherClass> OtherClasses { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
     }
 }
