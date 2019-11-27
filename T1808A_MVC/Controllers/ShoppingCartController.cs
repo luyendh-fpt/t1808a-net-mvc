@@ -20,66 +20,95 @@ namespace T1808A_MVC.Controllers
 
         public ActionResult AddCart(int productId, int quantity)
         {
+            // Check số lượng có hợp lệ không?
             if (quantity <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Invalid Quantity");
             }
+            // Check sản phẩm có hợp lệ không?
             var product = db.Products.Find(productId);
             if (product == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Product's' not found");
             }
-
+            // Lấy thông tin shopping cart từ session.
             var sc = LoadShoppingCart();
-            // lấy danh sách item cũ nếu có.
-            bool existItem = false;
-            var cartItems = sc.GetCartItems();
-            for (var i = 0; i < cartItems.Count; i++)
+            // Thêm sản phẩm vào shopping cart.
+            sc.AddCart(product, quantity);
+            // lưu thông tin cart vào session.
+            SaveShoppingCart(sc);
+            return Redirect("/ShoppingCart/ShowCart");
+        }
+
+        public ActionResult UpdateCart(int productId, int quantity)
+        {
+            // Check số lượng có hợp lệ không?
+            if (quantity <= 0)
             {
-                if (cartItems[i].ProductId == productId)
-                {
-                    cartItems[i].Quantity += quantity;
-                    existItem = true;
-                }
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Invalid Quantity");
             }
-            // tạo ra cart item tương ứng với product.
-            if (!existItem)
+            // Check sản phẩm có hợp lệ không?
+            var product = db.Products.Find(productId);
+            if (product == null)
             {
-                var cartItem = new CartItem
-                {
-                    ProductId = product.Id,
-                    ProductName = product.Name,
-                    Price = product.Price,
-                    Quantity = quantity
-                };
-                // đưa cart item tương ứng với sản phẩm (ở trên) vào danh sách.
-                cartItems.Add(cartItem);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Product's' not found");
             }
-            
-            // gán danh sách cart item ở trên vào cart item của shopping cart.
-            sc.SetCartItems(cartItems);
-            // lưu thông tin vào session.
+            // Lấy thông tin shopping cart từ session.
+            var sc = LoadShoppingCart();
+            // Thêm sản phẩm vào shopping cart.
+            sc.UpdateCart(product, quantity);
+            // lưu thông tin cart vào session.
+            SaveShoppingCart(sc);
+            return Redirect("/ShoppingCart/ShowCart");
+        }
+
+        public ActionResult RemoveCart(int productId)
+        {
+            var product = db.Products.Find(productId);
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Product's' not found");
+            }
+            // Lấy thông tin shopping cart từ session.
+            var sc = LoadShoppingCart();
+            // Thêm sản phẩm vào shopping cart.
+            sc.RemoveFromCart(product.Id);
+            // lưu thông tin cart vào session.
             SaveShoppingCart(sc);
             return Redirect("/ShoppingCart/ShowCart");
         }
 
         public ActionResult ShowCart()
         {
-            var shoppingCart = Session[SHOPPING_CART_NAME] as ShoppingCart;
-            ViewBag.shoppingCart = shoppingCart;
+            ViewBag.shoppingCart = LoadShoppingCart();
             return View();
         }
 
+        public ActionResult CreateOrder()
+        {
+            // load cart trong session.
+            // Chuyển shopping cart thành order và order detail.
+            // lưu vào database.
+            return Redirect("/Products");
+        }
+
+        /**
+         * Tham số nhận vào là một đối tượng shopping cart.
+         * Hàm sẽ lưu đối tượng vào session với key được define từ trước.
+         */
         private void SaveShoppingCart(ShoppingCart shoppingCart)
         {
             Session[SHOPPING_CART_NAME] = shoppingCart;
         }
 
+        /**
+         * Lấy thông tin shopping cart từ trong session ra. Trong trường hợp không tồn tại
+         * trong session thì tạo mới đối tượng shopping cart.
+         */
         private ShoppingCart LoadShoppingCart()
         {
             // lấy thông tin giỏ hàng ra.
-            var sc = Session[SHOPPING_CART_NAME] as ShoppingCart;
-            if (sc == null)
+            if (!(Session[SHOPPING_CART_NAME] is ShoppingCart sc))
             {
                 sc = new ShoppingCart();
             }

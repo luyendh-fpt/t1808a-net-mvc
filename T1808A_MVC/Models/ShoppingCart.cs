@@ -7,21 +7,67 @@ namespace T1808A_MVC.Models
 {
     public class ShoppingCart
     {
-        private List<CartItem> _cartItems;
-        public double TotalPrice { get; set; }
+        private Dictionary<int, CartItem> _cartItems = new Dictionary<int, CartItem>();
+        private double _totalPrice = 0;
 
-        public List<CartItem> GetCartItems()
+        public double GetTotalPrice()
         {
-            if (_cartItems == null)
+            this._totalPrice = 0;
+            foreach (var item in _cartItems.Values)
             {
-                _cartItems = new List<CartItem>();
+                this._totalPrice += item.Price * item.Quantity;
             }
+            return this._totalPrice;
+        }
+
+        public Dictionary<int, CartItem> GetCartItems()
+        {
             return _cartItems;
         }
 
-        public void SetCartItems(List<CartItem> cartItems)
+        public void SetCartItems(Dictionary<int, CartItem> cartItems)
         {
             this._cartItems = cartItems;
+        }
+
+        /**
+         * Thêm một sản phẩm vào giỏ hàng.
+         * Trong trường hợp tồn tại sản phẩm trong giỏ hàng thì update số lượng.
+         * Trong trường hợp không tồn tại thì thêm mới.
+         */
+        public void AddCart(Product product, int quantity)
+        {
+            if (_cartItems.ContainsKey(product.Id))
+            {
+                var item = _cartItems[product.Id];
+                item.Quantity += quantity;
+                _cartItems[product.Id] = item;
+                return;
+            }
+            var cartItem = new CartItem
+            {
+                ProductId = product.Id,
+                ProductName = product.Name,
+                Price = product.Price,
+                Quantity = quantity
+            };
+            // đưa cart item tương ứng với sản phẩm (ở trên) vào danh sách.
+            _cartItems.Add(cartItem.ProductId, cartItem);
+        }
+
+        public void UpdateCart(Product product, int quantity)
+        {
+            if (_cartItems.ContainsKey(product.Id))
+            {
+                var item = _cartItems[product.Id];
+                item.Quantity = quantity;
+                _cartItems[product.Id] = item;
+            }
+        }
+
+        public void RemoveFromCart(int productId)
+        {
+            _cartItems.Remove(productId);
         }
 
     }
