@@ -31,23 +31,36 @@ namespace T1808A_MVC.Controllers
             }
 
             var sc = LoadShoppingCart();
-            // tạo ra cart item tương ứng với product.
-            var cartItem = new CartItem
-            {
-                ProductId = product.Id,
-                ProductName = product.Name,
-                Price = product.Price,
-                Quantity = quantity
-            };
             // lấy danh sách item cũ nếu có.
+            bool existItem = false;
             var cartItems = sc.GetCartItems();
-            // đưa cart item tương ứng với sản phẩm (ở trên) vào danh sách.
-            cartItems.Add(cartItem);
+            for (var i = 0; i < cartItems.Count; i++)
+            {
+                if (cartItems[i].ProductId == productId)
+                {
+                    cartItems[i].Quantity += quantity;
+                    existItem = true;
+                }
+            }
+            // tạo ra cart item tương ứng với product.
+            if (!existItem)
+            {
+                var cartItem = new CartItem
+                {
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    Price = product.Price,
+                    Quantity = quantity
+                };
+                // đưa cart item tương ứng với sản phẩm (ở trên) vào danh sách.
+                cartItems.Add(cartItem);
+            }
+            
             // gán danh sách cart item ở trên vào cart item của shopping cart.
             sc.SetCartItems(cartItems);
             // lưu thông tin vào session.
-            Session[SHOPPING_CART_NAME] = sc;
-            return View();
+            SaveShoppingCart(sc);
+            return Redirect("/ShoppingCart/ShowCart");
         }
 
         public ActionResult ShowCart()
@@ -55,6 +68,11 @@ namespace T1808A_MVC.Controllers
             var shoppingCart = Session[SHOPPING_CART_NAME] as ShoppingCart;
             ViewBag.shoppingCart = shoppingCart;
             return View();
+        }
+
+        private void SaveShoppingCart(ShoppingCart shoppingCart)
+        {
+            Session[SHOPPING_CART_NAME] = shoppingCart;
         }
 
         private ShoppingCart LoadShoppingCart()
