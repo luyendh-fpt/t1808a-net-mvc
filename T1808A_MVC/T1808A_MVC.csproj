@@ -66,6 +66,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -172,6 +173,10 @@
     <Compile Include="Migrations\201911270645411_AddProductCategoryRelationship.cs" />
     <Compile Include="Migrations\201911270645411_AddProductCategoryRelationship.Designer.cs">
       <DependentUpon>201911270645411_AddProductCategoryRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911290803150_ChangeOrderOrderDetail.cs" />
+    <Compile Include="Migrations\201911290803150_ChangeOrderOrderDetail.Designer.cs">
+      <DependentUpon>201911290803150_ChangeOrderOrderDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -301,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911270645411_AddProductCategoryRelationship.resx">
       <DependentUpon>201911270645411_AddProductCategoryRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911290803150_ChangeOrderOrderDetail.resx">
+      <DependentUpon>201911290803150_ChangeOrderOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

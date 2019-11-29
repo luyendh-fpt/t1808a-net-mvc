@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -87,9 +88,55 @@ namespace T1808A_MVC.Controllers
         public ActionResult CreateOrder()
         {
             // load cart trong session.
-            // Chuyển shopping cart thành order và order detail.
-            // lưu vào database.
+            var shoppingCart = LoadShoppingCart();
+            if (shoppingCart.GetCartItems().Count <= 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad request");
+            }
+            // chuyển thông tin shopping cart thành Order.
+            var order = new Order
+            {
+                TotalPrice = shoppingCart.GetTotalPrice(),
+                MemberId = 1,
+                PaymentTypeId = (int) Order.PaymentType.Cod,
+                ShipName = "Xuan Hung",
+                ShipPhone = "0912345678",
+                ShipAddress = "Ton That Thuyet",
+                OrderDetails = new List<OrderDetail>()
+            };
+            // Tạo order detail từ cart item.
+            foreach (var cartItem in shoppingCart.GetCartItems())
+            {
+                var orderDetail = new OrderDetail()
+                {
+                    ProductId = cartItem.Value.ProductId,
+                    OrderId = order.Id,
+                    Quantity = cartItem.Value.Quantity,
+                    UnitPrice = cartItem.Value.Price
+                };
+                order.OrderDetails.Add(orderDetail);
+            }
+            db.Orders.Add(order);
+            db.SaveChanges();
+            ClearCart();
+            //// lưu vào database.
+            //var transaction = db.Database.BeginTransaction();
+            //try
+            //{
+                
+            //    transaction.Commit();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    transaction.Rollback();
+            //}
             return Redirect("/Products");
+        }
+
+        private void ClearCart()
+        {
+            Session.Remove(SHOPPING_CART_NAME);
         }
 
         /**
